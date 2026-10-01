@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "830096374887",
+    "project_id": "society-53c4b",
+    "storage_bucket": "society-53c4b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830096374887:android:96d0aaee810368477ea8c2",
+        "android_client_info": {
+          "package_name": "com.example.societycart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRWfPSAPPl0PpOXOWofY8WeGCpe4KcSy4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

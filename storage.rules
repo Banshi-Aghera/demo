@@ -1,0 +1,33 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    function signedIn() { return request.auth != null; }
+    function isAdmin() {
+      return signedIn() &&
+        firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    function isImageUnder5MB() {
+      return request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+    }
+
+    // Return-request photos: the customer and admins can see them.
+    match /returns/{uid}/{allPaths=**} {
+      allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
+      allow create: if signedIn() && request.auth.uid == uid && isImageUnder5MB();
+    }
+
+    // Review photos are public to signed-in shoppers.
+    match /reviews/{uid}/{allPaths=**} {
+      allow read: if signedIn();
+      allow create: if signedIn() && request.auth.uid == uid && isImageUnder5MB();
+    }
+
+    // Product, category and banner images (uploaded from the admin panel).
+    match /catalog/{allPaths=**} {
+      allow read: if signedIn();
+      allow write: if isAdmin() && isImageUnder5MB();
+    }
+  }
+}

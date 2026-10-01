@@ -1,0 +1,19 @@
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+*.g.dart
+*.freezed.dart
+.idea/
+*.iml
+
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+
+# Secrets: never commit
+tool/seed/service-account.json
+tool/seed/node_modules/
+functions/node_modules/
