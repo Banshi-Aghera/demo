@@ -26,7 +26,7 @@ Stream<SocietyMembership?> myMembership(Ref ref) async* {
 }
 @riverpod
 Stream<List<GroupDeal>> groupDeals(Ref ref) {
-  final membership = ref.watch(myMembershipProvider).valueOrNull;
+  final membership = ref.watch(myMembershipProvider).value;
   if (membership == null || !membership.isApproved) return Stream.value([]);
   
   final repo = ref.watch(societyRepositoryProvider);

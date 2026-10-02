@@ -53,8 +53,8 @@ class GroupDealCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final productAsync = ref.watch(productProvider(deal.productId));
-    final currentUser = ref.watch(authUserProvider).valueOrNull;
+    final productAsync = ref.watch(productByIdProvider(deal.productId));
+    final currentUser = ref.watch(authUserProvider).value;
 
     return Card(
       clipBehavior: Clip.antiAlias,

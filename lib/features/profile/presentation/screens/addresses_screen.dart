@@ -125,8 +125,10 @@ class AddressCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(children: [
-                      Text(addressLabelText(address.label),
-                          style: const TextStyle(fontWeight: FontWeight.w700)),
+                      Flexible(
+                        child: Text(addressLabelText(address.label),
+                            style: const TextStyle(fontWeight: FontWeight.w700)),
+                      ),
                       if (address.isDefault) ...[
                         const SizedBox(width: Gap.s),
                         Container(
